@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LoginTwitterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard-user', function () {
+    return view('dashboard-user');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -26,3 +32,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+Route::get('login/twitter', [LoginTwitterController::class, 'loginTwitter']);
+//Route::middleware(['auth:sanctum', 'verified'])->get('login/twitter', [LoginTwitterController::class, 'loginTwitter']);
+//Route::middleware(['auth:sanctum', 'verified'])->get('login/twitter/callback', [LoginTwitterController::class, 'getToken'])->name('k');
+
+Route::get('login/twitter/callback', [LoginTwitterController::class, 'getToken'])->name('k');
