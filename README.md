@@ -27,3 +27,32 @@ Añade las siguientes configuraciones en config/services.php:
     'redirect' => env('LINKEDIN_REDIRECT_URI'),
 ],
 ```
+# Paso 5: Crear rutas y controladores
+Crea una ruta y un controlador para manejar la autenticación con LinkedIn:
+```php
+// routes/web.php
+Route::get('/auth/linkedin', 'Auth\LoginController@redirectToLinkedIn');
+Route::get('/auth/linkedin/callback', 'Auth\LoginController@handleLinkedInCallback');
+
+// app/Http/Controllers/Auth/LoginController.php
+
+use Laravel\Socialite\Facades\Socialite;
+
+class LoginController extends Controller
+{
+    public function redirectToLinkedIn()
+    {
+        return Socialite::driver('linkedin')->redirect();
+    }
+
+    public function handleLinkedInCallback()
+    {
+        $user = Socialite::driver('linkedin')->user();
+
+        // Aquí puedes almacenar la información del usuario en la base de datos o realizar otras acciones.
+
+        return redirect()->route('home');
+    }
+}
+
+```
