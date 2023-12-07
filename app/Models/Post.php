@@ -15,8 +15,8 @@ class Post extends Model
     }
 
 
-    public function schedule()
+    public function calendario()
     {
-        return $this->belongsTo(Schedule::class, 'schedule_id');
+        return $this->belongsTo(Calendario::class, 'calendario_id');
     }
 }
