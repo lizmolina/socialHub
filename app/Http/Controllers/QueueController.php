@@ -10,7 +10,7 @@ class QueueController extends Controller
     public function index()
 	{
 		return view('queue.show', [
-		'cola' => Queue::where(function ($query) {
+		'queues' => Queue::where(function ($query) {
 			$query->where('user_id', request()->user()->id);
 		})->paginate(30)
 		]);

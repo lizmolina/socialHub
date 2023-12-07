@@ -6,8 +6,8 @@
               <h2 class="text-white text-lg font-bold mb-2">Menu</h2>
               <nav>
                   <ul class="text-white text-sm">
-                      <li><a href="#" class="block px-3 py-2 rounded hover:bg-gray-700">Publication</a></li>
-                      <li><a href="#" class="block px-3 py-2 rounded hover:bg-gray-700">Schedules</a></li>
+                      <li><a href="{{ route('posts') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Publication</a></li>
+                      <li><a href="{{ route('schedule') }}" class="block px-3 py-2 rounded hover:bg-gray-700">Schedules</a></li>
                       <li><a href="#" class="block px-3 py-2 rounded hover:bg-gray-700">Schedule Recurring Post</a></li>
                       <li><a href="#" class="block px-3 py-2 rounded hover:bg-gray-700">Add Social</a></li>
                   </ul>

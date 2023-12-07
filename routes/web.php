@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginTwitterController;
+use App\Http\Controllers\PostTwitterController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\QueueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +40,16 @@ Route::get('login/twitter', [LoginTwitterController::class, 'loginTwitter']);
 //Route::middleware(['auth:sanctum', 'verified'])->get('login/twitter/callback', [LoginTwitterController::class, 'getToken'])->name('k');
 
 Route::get('login/twitter/callback', [LoginTwitterController::class, 'getToken'])->name('k');
+Route::middleware(['auth:sanctum', 'verified'])->get('posts', [PostTwitterController::class, 'index'])->name('posts');
+Route::middleware(['auth:sanctum', 'verified'])->post('store', [PostTwitterController::class, 'store']);
+
+Route::middleware(['auth:sanctum', 'verified'])->post('twitter/post', [PostTwitterController::class, 'store'])->name('twitter-post');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('schedule', [ScheduleController::class, 'index'])->name('schedule');
+Route::middleware(['auth:sanctum', 'verified'])->get('schedule/{schedule:id}', [ScheduleController::class, 'edit']);
+Route::middleware(['auth:sanctum', 'verified'])->get('create', [ScheduleController::class, 'create'])->name('schedule-create');
+Route::middleware(['auth:sanctum', 'verified'])->post('store', [ScheduleController::class, 'store']);
+Route::middleware(['auth:sanctum', 'verified'])->put('update/{schedule:id}', [ScheduleController::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->delete('delete/{schedule:id}', [ScheduleController::class, 'destroy']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('queue', [QueueController::class, 'index'])->name('queue');

@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Schedule;
+use App\Models\Calendario;
 
 class ScheduleController extends Controller
 {
     public function index()
 	{
 		return view('schedule.show', [
-		'schedules' => Schedule::where(function ($query) {
+		'calendarios' => Calendario::where(function ($query) {
 			$query->where('user_id', request()->user()->id);
 		})->paginate(50)
 		]);
@@ -23,13 +23,13 @@ class ScheduleController extends Controller
 
     public function edit($id)
     {
-        $schedule = Schedule::find($id);
+        $schedule = Calendario::find($id);
         return view('schedule.edit')->with('schedule', $schedule);
     }
 
     public function store(Request $request)
 	{
-        $schedule = new Schedule();
+        $schedule = new Calendario();
 
         $schedule->date = $request->get('date');
         $schedule->time = $request->get('time');
@@ -43,7 +43,7 @@ class ScheduleController extends Controller
 
     public function update(Request $request, $id)
 	{
-        $schedule = Schedule::find($id);
+        $schedule = Calendario::find($id);
 
         $schedule->date = $request->get('date');
         $schedule->time = $request->get('time');
@@ -55,7 +55,7 @@ class ScheduleController extends Controller
 
     public function destroy($id)
     {
-        $schedule = Schedule::find($id);
+        $schedule = Calendario::find($id);
         $schedule->delete();
 
         return redirect('schedule');

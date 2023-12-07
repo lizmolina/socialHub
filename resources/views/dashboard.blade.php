@@ -10,7 +10,8 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-5">
                     <h5 class="text-lg text-center font-bold mb-4">Connect to Your Social Networks</h5>
-                    <div class="space-y-3">
+                    <div >
+
                         <a href="{{ url('login/twitter') }}" class="block w-full text-center py-2 rounded bg-blue-500 hover:bg-blue-600 text-white font-semibold transition duration-200">Connect with Twitter</a>
                         <a href="#" class="block w-full text-center py-2 rounded bg-blue-700 hover:bg-blue-800 text-white font-semibold transition duration-200">Connect with LinkedIn</a>
                     </div>
