@@ -34,6 +34,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    // routes/web.php
+
+Route::get('/auth/linkedin', 'Auth\LoginController@redirectToLinkedIn');
+Route::get('/auth/linkedin/callback', 'Auth\LoginController@handleLinkedInCallback');
+
 });
 Route::get('login/twitter', [LoginTwitterController::class, 'loginTwitter']);
 //Route::middleware(['auth:sanctum', 'verified'])->get('login/twitter', [LoginTwitterController::class, 'loginTwitter']);
