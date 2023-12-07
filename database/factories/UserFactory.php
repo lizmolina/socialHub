@@ -13,6 +13,7 @@ use Laravel\Jetstream\Features;
  */
 class UserFactory extends Factory
 {
+    
     /**
      * Define the model's default state.
      *
