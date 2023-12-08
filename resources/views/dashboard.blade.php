@@ -13,7 +13,7 @@
                     <div >
 
                         <a href="{{ url('login/twitter') }}" class="block w-full text-center py-2 rounded bg-blue-500 hover:bg-blue-600 text-white font-semibold transition duration-200">Connect with Twitter</a>
-                        <a href="#" class="block w-full text-center py-2 rounded bg-blue-700 hover:bg-blue-800 text-white font-semibold transition duration-200">Connect with LinkedIn</a>
+                        <a href="{{ url('/post-to-linkedin') }}" class="block w-full text-center py-2 rounded bg-blue-700 hover:bg-blue-800 text-white font-semibold transition duration-200">Connect with LinkedIn</a>
                     </div>
                 </div>
             </div>

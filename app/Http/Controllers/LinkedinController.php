@@ -39,7 +39,6 @@ class LinkedinController extends Controller
             ],
         ]);
 
-        // Manejar la respuesta según tus necesidades
         $statusCode = $response->getStatusCode();
 
         if ($statusCode == 201) {
