@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginTwitterController;
 use App\Http\Controllers\PostTwitterController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\QueueController;
+use App\Http\Controllers\LinkedinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,7 @@ Route::middleware(['auth:sanctum', 'verified'])->delete('delete/{schedule:id}', 
 Route::middleware(['auth:sanctum', 'verified'])->get('queue', [QueueController::class, 'index'])->name('queue');
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::post('/post-to-linkedin', 'LinkedinController@postToLinkedIn');
-});
+#Route::middleware(['auth'])->group(function () {Route::post('/post-to-linkedin', 'LinkedinController@postToLinkedIn');});
+
+Route::get('/auth/linkedin', [LinkedinController::class, 'redirectToLinkedIn']);
+Route::get('/auth/linkedin/callback', [LinkedinController::class, 'handleLinkedInCallback']);

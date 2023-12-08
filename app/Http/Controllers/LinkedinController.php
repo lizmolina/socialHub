@@ -5,10 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class LinkedinController extends Controller
 {
-    public function postToLinkedIn(Request $request)
+    public function redirectToLinkedIn()
+    {
+        return Socialite::driver('linkedin')->redirect();
+    }
+
+    /**
+     * Obtain the user information from LinkedIn.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleLinkedInCallback()
+    {
+        $user = Socialite::driver('linkedin')->user();
+
+
+        // Autenticar al usuario o registrar según tu lógica
+        auth()->login($user, true);
+
+        // Redirigir a la ruta deseada después de la autenticación
+        return redirect()->route('home');
+    }
+
+
+
+    /*public function postToLinkedIn(Request $request)
     {
         $user = Auth::user();
         $accessToken = $user->token;
@@ -46,5 +71,5 @@ class LinkedinController extends Controller
         } else {
             return "Error al publicar en LinkedIn: " . $statusCode;
         }
-    }
+    }*/
 }
